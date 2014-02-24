@@ -1,5 +1,5 @@
-// Our first program will print the classic "hello world"`
-// message. Here's the full source code.
+// 我们的第一个程序将会打印出经典的 "hello world"`
+// 下面是完整的代码
 package main
 
 import "fmt"
