@@ -18,13 +18,13 @@ func main() {
     var d = true
     fmt.Println(d)
 
-	// 为初始化的变量将会默认初始化为该类型的0值，比如
-	// `int`类型的0值是`0`。
+    // 为初始化的变量将会默认初始化为该类型的0值，比如
+    // `int`类型的0值是`0`。
     var e int
     fmt.Println(e)
 
-	// `:=` 语法是定义并初始化一个变量的快捷方式
-	// 下面的示例效果和`var f string = "short"`一样
+    // `:=` 语法是定义并初始化一个变量的快捷方式
+    // 下面的示例效果和`var f string = "short"`一样
     f := "short"
     fmt.Println(f)
 }
