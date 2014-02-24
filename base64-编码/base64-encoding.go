@@ -10,23 +10,23 @@ import "fmt"
 
 func main() {
 
-	// 下面的 `字符串` 是我我们将要 编码/解码 的。
+    // 下面的 `字符串` 是我我们将要 编码/解码 的。
     data := "abc123!?$*&()'-=@~"
 
-	// go 支持 标准和url兼容的base64编解码,
-	// 下面是使用标准的编码器编码，编码器需要一个
-	// `[]byte` 类型的变量，所以我们将把 `string` 转
-	// 那种类型
+    // go 支持 标准和url兼容的base64编解码,
+    // 下面是使用标准的编码器编码，编码器需要一个
+    // `[]byte` 类型的变量，所以我们将把 `string` 转
+    // 那种类型
     sEnc := b64.StdEncoding.EncodeToString([]byte(data))
     fmt.Println(sEnc)
 
-	// 解码或许会返回一个错误，如果你不确定输入的格式是否有误，
-	// 它会帮助你定位错误
+    // 解码或许会返回一个错误，如果你不确定输入的格式是否有误，
+    // 它会帮助你定位错误
     sDec, _ := b64.StdEncoding.DecodeString(sEnc)
     fmt.Println(string(sDec))
     fmt.Println()
 
-	// 使用 url兼容的 编解码器
+    // 使用 url兼容的 编解码器
     uEnc := b64.URLEncoding.EncodeToString([]byte(data))
     fmt.Println(uEnc)
     uDec, _ := b64.URLEncoding.DecodeString(uEnc)
