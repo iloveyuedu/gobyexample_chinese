@@ -7,11 +7,11 @@ import "os"
 
 func main() {
 
-	// 使用 `os.Exit`退出`defer`s 语句不会执行
-	// 所以 `fmt.Println` 永远不会执行
+    // 使用 `os.Exit`退出`defer`s 语句不会执行
+    // 所以 `fmt.Println` 永远不会执行
     defer fmt.Println("!")
 
-	// 退出并返回状态码3
+    // 退出并返回状态码3
     os.Exit(3)
 }
 
