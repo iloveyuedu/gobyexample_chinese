@@ -1,7 +1,5 @@
-// _Closing_ a channel indicates that no more values
-// will be sent on it. This can be useful to communicate
-// completion to the channel's receivers.
-
+// 关闭通道意味着不会再有值会被发送到通道离了，或许这对于
+// 通道接收者很有用
 package main
 
 import "fmt"
