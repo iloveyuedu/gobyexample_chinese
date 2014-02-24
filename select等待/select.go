@@ -12,10 +12,6 @@ func main() {
     c1 := make(chan string)
     c2 := make(chan string)
 
-    // Each channel will receive a value after some amount
-    // of time, to simulate e.g. blocking RPC operations
-    // executing in concurrent goroutines.
-    
     // 每一个channel都将在若干秒后收到一个值，使用并发的协程
     // 来模拟阻塞的 RPC 操纵
     go func() {
