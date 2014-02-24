@@ -7,7 +7,7 @@ import "fmt"
 
 func main() {
 
-	// 字符串 可以通过+来进行连接
+    // 字符串 可以通过+来进行连接
     fmt.Println("go" + "lang")
 
     // 整形和浮点
