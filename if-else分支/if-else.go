@@ -1,5 +1,4 @@
-// Branching with `if` and `else` in Go is
-// straight-forward.
+// 在go里使用`if` 和 `else`分支
 
 package main
 
@@ -7,21 +6,20 @@ import "fmt"
 
 func main() {
 
-    // Here's a basic example.
+    // 基础用法
     if 7%2 == 0 {
         fmt.Println("7 is even")
     } else {
         fmt.Println("7 is odd")
     }
 
-    // You can have an `if` statement without an else.
+    // 没有else的if
     if 8%4 == 0 {
         fmt.Println("8 is divisible by 4")
     }
 
-    // A statement can precede conditionals; any variables
-    // declared in this statement are available in all
-    // branches.
+    // 可以包含先决条件，任何在这里申明的变量，在整个循环体内部都是
+    // 可以使用的
     if num := 9; num < 0 {
         fmt.Println(num, "is negative")
     } else if num < 10 {
@@ -31,5 +29,4 @@ func main() {
     }
 }
 
-// Note that you don't need parentheses around conditions
-// in Go, but that the brackets are required.
+// 在go里，你不在需要使用圆括号将条件表达式阔起来，单式大括号还是必须的
