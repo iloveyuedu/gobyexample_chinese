@@ -37,4 +37,4 @@ func main() {
     http.ListenAndServe(":5000", nil)
 }
 
-// todo: logging status code?
+// todo: 记录响应状态码?
