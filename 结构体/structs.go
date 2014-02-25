@@ -29,8 +29,6 @@ func main() {
     s := person{name: "Sean", age: 50}
     fmt.Println(s.name)
 
-    // You can also use dots with struct pointers - the
-    // pointers are automatically dereferenced.
     // 你也可以在struct指针上使用.获取实际的值，
     // 指针会自动转为实际值
     sp := &s
