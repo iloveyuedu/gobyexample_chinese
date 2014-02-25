@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-    // `x := val` is shorthand for `var x type = val`.
+    // `x := val` 是 `var x type = val` 的快捷写法
     x := "Hello var"
     fmt.Println(x)
 }
