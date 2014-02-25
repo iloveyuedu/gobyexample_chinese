@@ -20,8 +20,6 @@ func main() {
     // 将会并发的执行这个函数调用
     go f("goroutine")
 
-    // You can also start a goroutine for an anonymous
-    // function call.
     // 也可以将匿名函数调用放到一个新协程里
     go func(msg string) {
         fmt.Println(msg)
