@@ -1,5 +1,5 @@
-// _Slices_ are a key data type in Go, giving a more
-// powerful interface to sequences than arrays.
+// 切片是go里非常重要的数据结果，比数组这类固定
+// 长度的序列要强大很多
 
 package main
 
