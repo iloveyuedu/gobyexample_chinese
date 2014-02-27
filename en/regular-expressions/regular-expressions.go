@@ -22,12 +22,10 @@ func main() {
 	// 下面就是上面匹配字符串更好的写法
     fmt.Println(r.MatchString("peach"))
 
-    // This finds the match for the regexp.
+	// 用正则去查找字符串
     fmt.Println(r.FindString("peach punch"))
 
-    // The also finds the first match but returns the
-    // start and end indexes for the match instead of the
-    // matching text.
+    // 用正则去查找字符串，返回匹配的起始和结束索引
     fmt.Println(r.FindStringIndex("peach punch"))
 
     // The `Submatch` variants include information about
