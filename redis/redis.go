@@ -5,13 +5,13 @@ import "time"
 import "fmt"
 
 func main() {
-    // initialize
+    // 初始化
     conf := redis.DefaultConfig()
     client := redis.NewClient(conf)
     fmt.Println(conf)
     fmt.Println(client)
 
-    // set & get
+    // set & get操作
     setRep := client.Set("foo", "bar")
     if setRep.Err != nil {
         panic(setRep.Err)
@@ -25,14 +25,14 @@ func main() {
     fmt.Println(getRep)
     fmt.Println(getStr)
 
-    // variadic calls
+    // 同时获取不定个数的键Mget,使用了可变参数
     client.Set("foo1", "bar1")
     client.Set("foo2", "bar2")
     client.Set("foo3", "bar3")
     mgetRep := client.Mget("foo1", "foo2", "foo3")
     fmt.Println(mgetRep)
 
-    // multi calls
+    // 调用多次
     mcRep := client.MultiCall(func(mc *redis.MultiCall) {
         mc.Set("k1", "v1")
         mc.Get("k1")
@@ -43,7 +43,7 @@ func main() {
     mcVal, _ := mcRep.Elems[1].Str()
     fmt.Println(mcVal)
 
-    // transactional calls
+    // 事务操作
     tRep := client.Transaction(func(mc *redis.MultiCall) {
         mc.Set("k2", "v2")
         mc.Get("k2")
@@ -54,7 +54,7 @@ func main() {
     tStr, _ := tRep.Elems[1].Str()
     fmt.Println(tStr)
 
-    // pubsub
+    // 订阅/发布
     msgHdlr := func(msg *redis.Message) {
         fmt.Println(msg)
     }
@@ -71,7 +71,7 @@ func main() {
     time.Sleep(time.Second)
 }
 
-// todo: connection pooling & concurrency?
-// todo: reconnection?
-// todo: errors?
+// todo: 连接池 & 并发?
+// todo: 重新连接?
+// todo: 错误?
 // todo: redis_url
