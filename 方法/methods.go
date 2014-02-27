@@ -1,4 +1,4 @@
-// Go 支持在struct类型上定义方法.
+// Go 支持在类型上定义方法.
 
 package main
 
