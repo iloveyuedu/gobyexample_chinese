@@ -14,15 +14,15 @@ func main() {
     fmt.Println(f)
 
     // `ParseInt`, `0` 表示自动推断解析数值的进制，`64`表示结果
-	// 使用int64来表示
+    // 使用int64来表示
     i, _ := strconv.ParseInt("123", 0, 64)
     fmt.Println(i)
 
-	// `ParseInt`能识别16进制的数值字符串
+    // `ParseInt`能识别16进制的数值字符串
     d, _ := strconv.ParseInt("0x1c8", 0, 64)
     fmt.Println(d)
 
-	// `ParseUint`也是可用的
+    // `ParseUint`也是可用的
     u, _ := strconv.ParseUint("789", 0, 64)
     fmt.Println(u)
 

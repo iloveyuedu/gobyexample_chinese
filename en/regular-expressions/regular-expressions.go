@@ -1,6 +1,6 @@
-// Go offers built-in support for [regular expressions](http://en.wikipedia.org/wiki/Regular_expression).
-// Here are some examples of  common regexp-related tasks
-// in Go.
+// [regular expressions](http://en.wikipedia.org/wiki/Regular_expression).
+// go为正则表达式提供了内建支持
+// 下面是在go里使用正则表达式执行一些常见的任务
 
 package main
 
@@ -10,17 +10,16 @@ import "regexp"
 
 func main() {
 
-    // This tests whether a pattern matches a string.
+	// 测试一个正则是否匹配一个字符串
     match, _ := regexp.MatchString("p([a-z]+)ch", "peach")
     fmt.Println(match)
 
-    // Above we used a string pattern directly, but for
-    // other regexp tasks you'll need to `Compile` an
-    // optimized `Regexp` struct.
+    // 上面我们直接使用了一个正则表达式字符串，但是一般我们
+	// 都需要先编译正则表达式来优化正则表达式的结构
     r, _ := regexp.Compile("p([a-z]+)ch")
 
-    // Many methods are available on these structs. Here's
-    // a match test like we saw earlier.
+    // 正则表达式有许多方法可以使用
+	// 下面就是上面匹配字符串更好的写法
     fmt.Println(r.MatchString("peach"))
 
     // This finds the match for the regexp.
