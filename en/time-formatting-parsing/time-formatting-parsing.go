@@ -1,5 +1,4 @@
-// Go supports time formatting and parsing via
-// pattern-based layouts.
+// go支持把固定的字符串解析成时间结构
 
 package main
 
