@@ -1,7 +1,6 @@
-// In the previous example we saw how to manage simple
-// counter state using atomic operations. For more complex
-// state we can use a _[mutex](http://en.wikipedia.org/wiki/Mutual_exclusion)_
-// to safely access data across multiple goroutines.
+// 在之前的例子里我们了解到了如何使用atomic管理计数器的状态
+// 更复杂的状态我们可以使用_[锁](http://en.wikipedia.org/wiki/Mutual_exclusion)_
+// 来安全的获取多个协程共同操作的数据
 
 package main
 
@@ -16,15 +15,16 @@ import (
 
 func main() {
 
-    // For our example the `state` will be a map.
+    // `state`定义为一张表
     var state = make(map[int]int)
 
-    // This `mutex` will synchronize access to `state`.
+    // `mutex`将会排队去操作`state`
     var mutex = &sync.Mutex{}
 
     // To compare the mutex-based approach with another
     // we'll see later, `ops` will count how many
     // operations we perform against the state.
+    // 
     var ops int64 = 0
 
     // Here we start 100 goroutines to execute repeated
