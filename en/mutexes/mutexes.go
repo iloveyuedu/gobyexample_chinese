@@ -21,25 +21,21 @@ func main() {
     // `mutex`将会排队去操作`state`
     var mutex = &sync.Mutex{}
 
-    // To compare the mutex-based approach with another
-    // we'll see later, `ops` will count how many
-    // operations we perform against the state.
-    // 
+    // 和我们之前看过的锁机制进行比较，`ops`会统计
+    // 我们对state进行了多少次操作
     var ops int64 = 0
 
-    // Here we start 100 goroutines to execute repeated
-    // reads against the state.
+    // 下面我们启动了一百个协程用来执行对state的读操作
     for r := 0; r < 100; r++ {
         go func() {
             total := 0
             for {
 
-                // For each read we pick a key to access,
-                // `Lock()` the `mutex` to ensure
-                // exclusive access to the `state`, read
-                // the value at the chosen key,
-                // `Unlock()` the mutex, and increment
-                // the `ops` count.
+                // 每次我们都随机出一个键来从state表中取数据
+                // 同时我们使用`mutex`里的`Lock()`来确保在对
+                // state操作时，state被当前协程独占的
+                // 获取完数据后执行`Unlock()`来释放锁
+                // 同时对`ops`执行加一操作
                 key := rand.Intn(5)
                 mutex.Lock()
                 total += state[key]
@@ -54,13 +50,14 @@ func main() {
                 // channel operation and for blocking
                 // calls like `time.Sleep`, but in this
                 // case we need to do it manually.
+                // 为了确保当前这个协程也能被调度，这里我们使用`runtime.Gosched()`
+                // 来让出时间片
                 runtime.Gosched()
             }
         }()
     }
 
-    // We'll also start 10 goroutines to simulate writes,
-    // using the same pattern we did for reads.
+    // 我们使用和读操作相同的模式，开10个协程来模拟写操作
     for w := 0; w < 10; w++ {
         go func() {
             for {
@@ -75,15 +72,15 @@ func main() {
         }()
     }
 
-    // Let the 10 goroutines work on the `state` and
-    // `mutex` for a second.
+    // 让上面的10个协程先跑一会儿
     time.Sleep(time.Second)
 
-    // Take and report a final operations count.
+    // 获取并输出最后的计数结果
     opsFinal := atomic.LoadInt64(&ops)
     fmt.Println("ops:", opsFinal)
 
     // With a final lock of `state`, show how it ended up.
+    // 最后锁一下`state`，看看最终是什么情况
     mutex.Lock()
     fmt.Println("state:", state)
     mutex.Unlock()
